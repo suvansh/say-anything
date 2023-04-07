@@ -1,0 +1,106 @@
+/* Input form container */
+#inputForm {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  /* Input text field */
+  #inputForm input {
+    padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    outline: none;
+  }
+
+  #inputText {
+    width: 100%;
+  }
+
+  #numDetections {
+    width: 70%;
+    margin-right: 7px;
+  }
+  
+  .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+  #inputForm input:focus {
+    border: 2px solid rgb(195,107,238);
+  }
+  
+  /* Submit button */
+  #inputForm button {
+    padding: 5px 10px;
+    background: rgb(195,107,238);
+    background: linear-gradient(143deg, rgba(195,107,238,1) 0%, rgba(150,165,238,1) 50%, rgba(91,216,237,1) 100%);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  #inputForm button:hover {
+    background: rgb(91,216,237);
+    background: linear-gradient(217deg, rgba(91,216,237,1) 0%, rgba(150,165,238,1) 50%, rgba(195,107,238,1) 100%);
+  }
+
+  .brilliantly {
+    background: rgb(195,107,238);
+    background: linear-gradient(143deg, rgba(195,107,238,1) 0%, rgba(150,165,238,1) 50%, rgba(91,216,237,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+  }
+  
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: -130px;
+    margin-top: -15px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform: translateY(-50%);
+    font-size: small;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+
+  .help {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    background-color: #a6adbb;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  

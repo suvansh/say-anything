@@ -4,7 +4,7 @@ Use natural language prompting to interact with Meta's [SAM](https://segment-any
 This is just for fun, and results are variable in their quality. Some of the failure modes are explainable (the gradient mapping is imprecise, so some small objects are near misses) and others are just way off. Also tried grabbing all masks and filtering against the search term, but that was slower and noisier. Maybe with some more patience later it'll work better though.
 
 ## Installation
-![Installation instructions from ChatGPT](sam-prompt-extension/screenshots/installation_chatgpt.png?raw=true) "Installation instructions")
+![Installation instructions from ChatGPT](img/installation_chatgpt.png?raw=true) "Installation instructions")
 
 ## Screenshots
 To be added later, see 
