@@ -73,19 +73,26 @@ window.addEventListener("load", function () {
     // Create input textbox overlay
     const inputOverlay = document.createElement("div");
     inputOverlay.innerHTML = `
-        <form id="inputForm" style="display: flex; flex-direction: column;">
-            <input type="text" id="inputText" placeholder="Enter text prompt" required>
-            <div class="form-row">
-                <input type="number" id="numDetections" min="1" placeholder="How many?">
-                <button type="submit">Submit</button>
+    <form id="inputForm" style="display: flex; flex-direction: column;">
+        <input type="text" id="inputText" placeholder="Enter text prompt" required>
+        <div class="form-row">
+            <input type="number" id="numDetections" min="1" placeholder="How many?">
+            <button type="submit">Submit</button>
+        </div>
+        <div class="form-row">
+            <input type="checkbox" id="customServerCheckbox">
+            <label style="font-size: 12px; margin-left: 5px; color: #ffffff" for="customServerCheckbox">Use custom server</label>
+        </div>
+        <div class="form-row">
+            <input type="text" id="customServerInput" placeholder="Enter server address..." value="http://localhost:5000" style="display: none;">
+        </div>
+        <div class="form-row">
+            <span style="font-size: 10px; color: #ffffff">Made with love and AI by <a href="https://brilliantly.ai" target="_blank" rel="noopener noreferrer" class="brilliantly">brilliantly</a>.</span>
+            <div class="help tooltip">?
+                <span class="tooltiptext">The extension will click on the first few spots that match the text prompt. You can set the mode to be additive or subtractive, even bounding box if you're feeling silly.</span>
             </div>
-            <div class="form-row">
-                <span style="font-size: 10px; margin-top: 5px; color: #ffffff">Made with love and AI by <a href="https://brilliantly.ai" target="_blank" rel="noopener noreferrer" class="brilliantly">brilliantly</a>.</span>
-                <div class="help tooltip">?
-                    <span class="tooltiptext">The extension will click on the first few spots that match the text prompt. You can set the mode to be additive or subtractive, even bounding box if you're feeling silly.</span>
-                </div>
-            </div>
-        </form>
+        </div>
+    </form>
     `;
     inputOverlay.style.cssText = `
         position: fixed;
@@ -99,6 +106,14 @@ window.addEventListener("load", function () {
         border-radius: 5px;
     `;
     document.body.appendChild(inputOverlay);
+    document.getElementById('customServerCheckbox').addEventListener('change', function() {
+        var customServerInput = document.getElementById('customServerInput');
+        if (this.checked) {
+            customServerInput.style.display = 'block';
+        } else {
+            customServerInput.style.display = 'none';
+        }
+    });
     const inputForm = document.getElementById("inputForm");
     const inputText = document.getElementById("inputText");
     const numDetectionsInput = document.getElementById("numDetections");
@@ -156,6 +171,20 @@ window.addEventListener("load", function () {
                 return;
             }
 
+            var customServerCheckbox = document.getElementById('customServerCheckbox');
+            var serverAddress = null;
+            if (customServerCheckbox.checked) {
+                var customServerInput = document.getElementById('customServerInput');
+                if (!customServerInput.value) {
+                    alert("Please enter a custom server address");
+                    return;
+                }
+                serverAddress = customServerInput.value;
+            }
+            else {
+                serverAddress = "https://sam-clip-server.brilliantly.ai";
+            }
+
             if (mostRecentImageURL) {
                 // // Fetch the most recent image as a Blob
                 // const response = await fetch(mostRecentImageURL);
@@ -167,7 +196,7 @@ window.addEventListener("load", function () {
                     imageURL: mostRecentImageURL,
                     numDetections: numDetections,
                 };
-                const apiResponse = await fetch("https://sam-clip-server.brilliantly.ai/api/coordinates", {
+                const apiResponse = await fetch(`${serverAddress}/api/coordinates`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
