@@ -104,3 +104,8 @@
     height: 20px;
   }
   
+
+  #customServerInput {
+    display: block;
+    width: 80%;
+  }

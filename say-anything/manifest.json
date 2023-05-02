@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Say Anything: Prompt Segment Anything Model",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Enable natural language prompting for the Segment Anything Model (SAM) using CLIP embeddings.",
   "icons": {
     "16": "icons/icon16.png",
