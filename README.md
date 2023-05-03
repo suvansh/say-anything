@@ -4,6 +4,9 @@ Use natural language prompting to interact with Meta's [SAM](https://segment-any
 This is just for fun, and results are variable in their quality. Some of the failure modes are explainable (the gradient mapping is imprecise, so some small objects are near misses) and others are just way off. Also tried grabbing all masks and filtering against the search term, but that was slower and noisier. Maybe with some more patience later it'll work better though.
 
 ## Installation
+You can install the extension from the Chrome web store [here](https://chrome.google.com/webstore/detail/say-anything-prompt-segme/jndfmkiclniflknfifngodjnmlibhjdo).
+
+If you prefer to run the extension locally from this repo, see the following instructions:
 ![Installation instructions from ChatGPT](img/installation_chatgpt.png?raw=true "Installation instructions")
 
 ## Screenshots
